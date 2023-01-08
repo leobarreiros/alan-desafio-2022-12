@@ -1,0 +1,31 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      dotnet: 6.0
+    commands:
+      - npm install -g aws-cdk
+  pre_build:
+    commands:
+      - cd src/ApiDeMoedas
+  build:
+    commands:      
+      - dotnet restore
+      - dotnet build --no-restore
+      - dotnet publish -c Production -o binaries      
+      - mkdir $CODEBUILD_SRC_DIR/binaries
+      - cp -r binaries/* $CODEBUILD_SRC_DIR/binaries
+  post_build:
+    commands:
+      - dir $CODEBUILD_SRC_DIR
+artifacts:  
+  files:
+    - $CODEBUILD_SRC_DIR/binaries/*
+  discard-paths: yes
+  secondary-artifacts:
+    application:
+      files:
+        - $CODEBUILD_SRC_DIR/binaries/*
+        - $CODEBUILD_SRC_DIR/scripts/*
+        - $CODEBUILD_SRC_DIR/appspec.yml
+      discard-paths: yes

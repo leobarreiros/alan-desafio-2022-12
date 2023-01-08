@@ -1,0 +1,2 @@
+systemctl stop apidemoedas.service
+systemctl start apidemoedas.service

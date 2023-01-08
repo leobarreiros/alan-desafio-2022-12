@@ -1,0 +1,14 @@
+[Unit]
+Description= Api de Moedas running on Amazon Linux
+
+[Service]
+WorkingDirectory=wwwroot/api-de-moedas
+ExecStart=/usr/bin/dotnet /wwwroot/api-de-moedas/ApiDeMoedas.dll --urls "http://0.0.0.0:80"
+Restart=always
+RestartSec=10
+KillSignal=SIGINT
+SyslogIdentifier=api-de-moedas
+Environment=ASPNETCORE_ENVIRONMENT=Production
+
+[Install]
+WantedBy=multi-user.target
