@@ -9,7 +9,7 @@ namespace Commands.Cotacoes.SolicitarCotacaoParaCliente.Validators
     public class SolicitarCotacaoParaClienteRequestValidator : 
         BaseFluentValidation<SolicitarCotacaoParaClienteRequestDto>
     {
-        private const string MUITO_RICO = "Você possuir tanto dinheiro assim?";
+        public const string MUITO_RICO = "Você possuir tanto dinheiro assim?";
 
         public SolicitarCotacaoParaClienteRequestValidator()
         {
@@ -20,6 +20,10 @@ namespace Commands.Cotacoes.SolicitarCotacaoParaCliente.Validators
                 .WithMessage(VALOR_MENOR_ZERO)
                 .LessThan(10000000000)
                 .WithMessage(MUITO_RICO);
+
+            RuleFor(x => x)
+                .Must(x => x.De != x.Para)
+                .WithMessage(COTACAO_DE_PARA_INVALIDA);
         }
     }
 }

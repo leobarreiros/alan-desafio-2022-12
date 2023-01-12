@@ -30,7 +30,8 @@ namespace Domain.Models
         public Cliente Cliente { get; private set; }
         public Cotacao Cotacao { get; private set; }
         public decimal ValorSolicitado { get; private set; }
-        public decimal ValorDoPedido { get { return Math.Round(ValorSolicitado / CotacaoComTaxa, 2); } }
+        public decimal ValorDoPedido { get { return Math.Round(ValorSolicitado / Cotacao.Valor, 2); } }
+        public decimal ValorDoPedidoComTaxa { get { return Math.Round(ValorSolicitado / CotacaoComTaxa, 2); } }
         public decimal CotacaoComTaxa { get { return Cotacao.Valor * MultiplicadorCorrente; } }
         public decimal MultiplicadorCorrente { get; private set; }
         public DateTime SolicitadoEm { get; private set; }

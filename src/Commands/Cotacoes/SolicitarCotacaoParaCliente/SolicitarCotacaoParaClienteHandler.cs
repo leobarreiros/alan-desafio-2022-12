@@ -38,9 +38,9 @@ namespace Commands.Cotacoes.SolicitarCotacao
                             pedidoResult.Value.Cliente.Nome,
                             pedidoResult.Value.Cliente.Email,
                             pedidoResult.Value.Cliente.Id),
+                        pedidoResult.Value.ValorSolicitado,
                         pedidoResult.Value.ValorDoPedido,
-                        pedidoResult.Value.Cotacao.Valor,
-                        pedidoResult.Value.CotacaoComTaxa));
+                        pedidoResult.Value.ValorDoPedidoComTaxa));
         }
     }
 }

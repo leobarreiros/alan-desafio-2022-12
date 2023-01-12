@@ -17,5 +17,6 @@ namespace Shared.Extensions.FluentValidation
             "Não foi possível receber o seu request. Verifique se todos os campos estão com os tipos de dados corretos.";
         public const string CLIENTE_NAO_LOCALIZADO = "Cliente não localizado";
         public const string COTACAO_NAO_OBTIDA = "Cotação não pode ser obtida";
+        public const string COTACAO_DE_PARA_INVALIDA = "Cotações De e Para precisam ser diferentes";
     }
 }
