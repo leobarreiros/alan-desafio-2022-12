@@ -34,4 +34,25 @@ namespace Shared
             return result;
         }
     }
+
+    public struct ValueResult
+    {
+        public bool Failed { get; private set; }
+        public string Error { get; private set; }
+        public string Tag { get; private set; }
+
+        public static ValueResult Success()
+        {
+            return default(ValueResult);
+        }
+
+        public static ValueResult Faliure(string error, string tag = "")
+        {
+            var result = default(ValueResult);
+            result.Failed = true;
+            result.Tag = tag;
+            result.Error = error;
+            return result;
+        }
+    }
 }

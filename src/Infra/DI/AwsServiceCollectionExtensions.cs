@@ -1,6 +1,7 @@
 ﻿using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.DataModel;
 using Amazon.Extensions.NETCore.Setup;
+using Amazon.IdentityManagement;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,8 @@ namespace Infra.DI
         {
             services.AddDefaultAWSOptions(awsConfig);
             services.AddAWSService<IAmazonDynamoDB>();
-            services.AddScoped<IDynamoDBContext, DynamoDBContext>();
+            services.AddAWSService<IAmazonIdentityManagementService>();
+            services.AddScoped<IDynamoDBContext, DynamoDBContext>();            
         }
     }
 }

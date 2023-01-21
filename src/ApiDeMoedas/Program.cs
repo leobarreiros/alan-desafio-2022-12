@@ -1,4 +1,5 @@
 using ApiDeMoedas.Dtos.SolicitarCotacaoParaCliente;
+using ApiDeMoedas.Middlewares;
 using Commands.Clientes.CadastrarCliente;
 using Commands.Clientes.CadastrarCliente.Dtos;
 using Commands.Cotacoes.SolicitarCotacao;
@@ -28,6 +29,8 @@ builder.Host.ConfigureAppConfiguration((hostContext, config) =>
 
 var app = builder.Build();
 
+app.UseMiddleware<ExceptionHandlerMiddleware>();
+app.UseMiddleware<AwsApiKeyMiddleware>();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
